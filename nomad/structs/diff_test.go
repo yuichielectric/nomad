@@ -2676,8 +2676,8 @@ func TestTaskGroupDiff(t *testing.T) {
 									{
 										Type: DiffTypeNone,
 										Name: "Native",
-										Old:  "false",
-										New:  "false",
+										Old:  "",
+										New:  "",
 									},
 								},
 								Objects: []*ObjectDiff{
@@ -4779,18 +4779,54 @@ func TestTaskDiff(t *testing.T) {
 							{
 								Type: DiffTypeAdded,
 								Name: "ConsulConnect",
+								Objects: []*ObjectDiff{
+									{
+										Type: DiffTypeAdded,
+										Name: "SidecarService",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+
+		{
+			Name: "Service with Connect Native",
+			Old: &Task{
+				Services: []*Service{
+					{
+						Name: "foo",
+					},
+				},
+			},
+			New: &Task{
+				Services: []*Service{
+					{
+						Name: "foo",
+						Connect: &ConsulConnect{
+							Native: "task1",
+						},
+					},
+				},
+			},
+			Expected: &TaskDiff{
+				Type: DiffTypeEdited,
+				Objects: []*ObjectDiff{
+					{
+						Type: DiffTypeEdited,
+						Name: "Service",
+						Objects: []*ObjectDiff{
+							{
+								Type: DiffTypeAdded,
+								Name: "ConsulConnect",
 								Fields: []*FieldDiff{
 									{
 										Type: DiffTypeAdded,
 										Name: "Native",
 										Old:  "",
-										New:  "false",
-									},
-								},
-								Objects: []*ObjectDiff{
-									{
-										Type: DiffTypeAdded,
-										Name: "SidecarService",
+										New:  "task1",
 									},
 								},
 							},
