@@ -7,7 +7,7 @@ export default function ResourcesPage() {
     <>
       <HashiHead
         is={Head}
-        title="Resources | Nomad by HashiCorp"
+        title="Community | Nomad by HashiCorp"
         description="Nomad is widely deployed across a range of enterprises and business verticals."
       />
       <div id="p-resources" className="g-grid-container">
@@ -15,7 +15,7 @@ export default function ResourcesPage() {
           product="nomad"
           content={
             <>
-              <h2>Resources</h2>
+              <h2>Community</h2>
               <p>
                 Nomad is widely adopted and used in production by PagerDuty,
                 Target, Citadel, Trivago, SAP, Pandora, Roblox, eBay, Deluxe
@@ -26,33 +26,12 @@ export default function ResourcesPage() {
                 our community, learning Nomad&apos;s real world use-cases, or
                 integrating with third-party tools.
               </p>
-              <h3>Community</h3>
               <p>
                 <strong>Discussion Forum</strong>
                 <ul>
                   <li>
                     <a href="https://discuss.hashicorp.com/c/nomad">
                       HashiCorp Discussion Forum (Nomad Category)
-                    </a>
-                  </li>
-                </ul>
-              </p>
-              <p>
-                <strong>Mailing List</strong>
-                <ul>
-                  <li>
-                    <a href="https://groups.google.com/group/nomad-tool">
-                      Nomad Google Group
-                    </a>
-                  </li>
-                </ul>
-              </p>
-              <p>
-                <strong>Gitter</strong>
-                <ul>
-                  <li>
-                    <a href="https://gitter.im/hashicorp-nomad/Lobby">
-                      Nomad Chat Room
                     </a>
                   </li>
                 </ul>
@@ -82,7 +61,7 @@ export default function ResourcesPage() {
                   </li>
                 </ul>
                 Please only use this to report bugs. For general help, please
-                use our mailing list or Gitter.
+                use the discussion forum.
               </p>
               <h3>Who Uses Nomad</h3>
               <ul>
