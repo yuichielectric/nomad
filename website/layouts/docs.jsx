@@ -1,8 +1,8 @@
 import DocsPage from '@hashicorp/react-docs-page'
-import order from '../data/docs-navigation.js'
+import order from 'data/docs-navigation.js'
 import { frontMatter } from '../pages/docs/**/*.mdx'
 import { MDXProvider } from '@mdx-js/react'
-import Placement from '../components/placement-table'
+import Placement from 'components/placement-table'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -19,14 +19,14 @@ function DocsLayoutWrapper(pageMeta) {
             is: Head,
             title: `${pageMeta.page_title} | Nomad by HashiCorp`,
             description: pageMeta.description,
-            siteName: 'Nomad by HashiCorp'
+            siteName: 'Nomad by HashiCorp',
           }}
           sidenav={{
             Link,
             category: 'docs',
             currentPage: props.path,
             data: frontMatter,
-            order
+            order,
           }}
           resourceURL={`https://github.com/hashicorp/nomad/blob/master/website/pages/${pageMeta.__resourcePath}`}
         />

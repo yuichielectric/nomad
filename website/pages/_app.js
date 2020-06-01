@@ -10,10 +10,10 @@ import useAnchorLinkAnalytics from '@hashicorp/nextjs-scripts/lib/anchor-link-an
 import MegaNav from '@hashicorp/react-mega-nav'
 import AlertBanner from '@hashicorp/react-alert-banner'
 import HashiHead from '@hashicorp/react-head'
-import Footer from '../components/footer'
-import ProductSubnav from '../components/subnav'
+import Footer from 'components/footer'
+import ProductSubnav from 'components/subnav'
 import Error from './_error'
-import alertBannerData, { ALERT_BANNER_ACTIVE } from '../data/alert-banner'
+import alertBannerData, { ALERT_BANNER_ACTIVE } from 'data/alert-banner'
 
 NProgress({ Router })
 const { ConsentManager, openConsentManager } = createConsentManager({

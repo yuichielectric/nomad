@@ -1,5 +1,4 @@
-import fetch from 'isomorphic-unfetch'
-import VERSION from '../../data/version.js'
+import VERSION from 'data/version.js'
 import ProductDownloader from '@hashicorp/react-product-downloader'
 import Head from 'next/head'
 import HashiHead from '@hashicorp/react-head'
@@ -20,8 +19,8 @@ export default function DownloadsPage({ downloadData }) {
 
 export async function getStaticProps() {
   return fetch(`https://releases.hashicorp.com/nomad/${VERSION}/index.json`)
-    .then(r => r.json())
-    .then(r => {
+    .then((r) => r.json())
+    .then((r) => {
       // TODO: restructure product-downloader to run this logic internally
       return r.builds.reduce((acc, build) => {
         if (!acc[build.os]) acc[build.os] = {}
@@ -29,7 +28,7 @@ export async function getStaticProps() {
         return acc
       }, {})
     })
-    .then(r => ({ props: { downloadData: r } }))
+    .then((r) => ({ props: { downloadData: r } }))
     .catch(() => {
       throw new Error(
         `--------------------------------------------------------
