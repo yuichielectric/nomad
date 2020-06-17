@@ -3122,6 +3122,7 @@ func (a *AllocatedResources) Comparable() *ComparableResources {
 	prestartSidecarTasks := &AllocatedTaskResources{}
 	prestartEphemeralTasks := &AllocatedTaskResources{}
 	main := &AllocatedTaskResources{}
+	poststartTasks := &AllocatedTaskResources{}
 
 	for taskName, r := range a.Tasks {
 		lc := a.TaskLifecycles[taskName]
@@ -3133,11 +3134,14 @@ func (a *AllocatedResources) Comparable() *ComparableResources {
 			} else {
 				prestartEphemeralTasks.Add(r)
 			}
+		} else if lc.Hook == TaskLifecycleHookPoststop {
+			poststartTasks.Add(r)
 		}
 	}
 
 	// update this loop to account for lifecycle hook
 	prestartEphemeralTasks.Max(main)
+	prestartEphemeralTasks.Max(poststartTasks)
 	prestartSidecarTasks.Add(prestartEphemeralTasks)
 	c.Flattened.Add(prestartSidecarTasks)
 
@@ -4730,6 +4734,7 @@ func (d *DispatchPayloadConfig) Validate() error {
 
 const (
 	TaskLifecycleHookPrestart = "prestart"
+	TaskLifecycleHookPoststop = "poststop"
 )
 
 type TaskLifecycleConfig struct {
@@ -4753,6 +4758,7 @@ func (d *TaskLifecycleConfig) Validate() error {
 
 	switch d.Hook {
 	case TaskLifecycleHookPrestart:
+	case TaskLifecycleHookPoststop:
 	case "":
 		return fmt.Errorf("no lifecycle hook provided")
 	default:
